@@ -12,6 +12,11 @@ public class functions {
 
    /*    String message = greet();
         System.out.println(message);    */
+
+//        int ans = sum(20, 30);
+//        System.out.println(ans);
+        String personalised = mygreet("Nikhil Bhandari");
+        System.out.println(personalised);
     }
     /*
         // Q1-: take input of 2 numbers and print the sum
@@ -37,8 +42,20 @@ public class functions {
         System.out.println("sum of the numvber - " + sum);
 */
 
-       static String greet() {
+    /*   static String greet() {
            String greeting = "how r you ";
            return greeting;
-       }
-}
+       }      */
+
+    // Argguments - pass the value of the number when you are calling the methods in main()
+
+//    static  int sum (int a, int b){
+//        int sum = a + b;
+//        return sum;
+
+        static String mygreet (String name){
+            String message = "Hello " + name;
+            return message;
+        }
+    }
+
