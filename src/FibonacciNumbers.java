@@ -21,7 +21,7 @@ public class FibonacciNumbers {
 */
 
 //     Q2-:  Counting Occurrences
-
+       /*
         class countNums{
             public static void main(String[] args) {
              int n = 27477746;
@@ -37,4 +37,20 @@ public class FibonacciNumbers {
                 System.out.println(count);
             }
     }
+        */
+
+//     Q3-:  REVERSE PROBLEM
+
+ class reverse{
+     public static void main(String[] args) {
+         int  n =  245674;
+         int ans = 0;
+         while (n > 0){
+             int rem = n % 10;
+             n = n / 10;
+             ans = ans * 10 + rem;
+         }
+         System.out.println(ans);
+     }
+ }
 
