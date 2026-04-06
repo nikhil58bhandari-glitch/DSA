@@ -8,9 +8,9 @@ public class twoDArray {
         2 3 5
         6 5 4
          */
-      // int [][] arr = new int [3][];
+        // int [][] arr = new int [3][];
         // int [][] arr = new int [row] [col];
-       Scanner in = new Scanner(System.in);
+        //   Scanner in = new Scanner(System.in);
 
 //        int [][] arr = {
 //                {1, 2, 3}, // 0th index
@@ -20,19 +20,19 @@ public class twoDArray {
 //
 //        for(int i = 0; i < arr.length; i++){
 
-        int[][] arr = new int [3][3];
-            System.out.println(arr.length); // number of rows
+//        int[][] arr = new int [3][3];
+//            System.out.println(arr.length); // number of rows
+//
+//            // INPUT
+//            for(int row = 0; row < arr.length ; row++){
+//
+//                // for each col in every row
+//                for(int col = 0; col< arr[row].length; col++){
+//                    arr[row][col] = in.nextInt();
+//                }
+//            }
 
-            // INPUT
-            for(int row = 0; row < arr.length ; row++){
-
-                // for each col in every row
-                for(int col = 0; col< arr[row].length; col++){
-                    arr[row][col] = in.nextInt();
-                }
-            }
-
-            //output
+        //output
 //        for(int row = 0; row < arr.length ; row++){
 //
 //            // for each col in every row
@@ -49,9 +49,23 @@ public class twoDArray {
 //        }
 
 // inhence fir loop-:
-        for(int[] a : arr){
-            System.out.println(Arrays.toString(a));
+//        for(int[] a : arr){
+//            System.out.println(Arrays.toString(a));
+//        }
+//
+        // col num fix -.
+        int[][] arr = {
+                {1, 2, 3, 4},
+                {5, 6},
+                {7, 8, 9}
+        };
+
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr[row].length; col++) {
+                System.out.print(arr[row][col] + " ");
+            }
+            System.out.println();
         }
     }
-    }
+}
 
