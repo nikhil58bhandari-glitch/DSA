@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 import java.util.Scanner;
 
      /* Syntex-:
@@ -7,7 +9,7 @@ import java.util.Scanner;
      int [] rollnum = new int {2, 3, 4, 5, 6, 7};
      */
 
-public class Arrays {
+class Array {
     public static void main(String[] args) {
        // int[] arr; // declaration of array. rollnum is getting defined in the stack
         Scanner in = new Scanner(System.in);
@@ -25,18 +27,32 @@ public class Arrays {
 
 
         // input using for loops-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = in.nextInt();
-        }
-        // output
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i] = in.nextInt();
+//        }
+//
+//        System.out.println(Arrays.toString(arr));
 
-        // for-each loop
-        for (int j : arr) { // for every element in array, print the element
-            System.out.print(arr[j] + " "); // here j represent element of the array
+//        // output
+//        for (int i = 0; i < arr.length; i++) {
+//            System.out.print(arr[i] + " ");
+//        }
+//
+//        // for-each loop
+//        for (int j : arr) { // for every element in array, print the element
+//            System.out.print(arr[j] + " "); // here j represent element of the array
+//        }
+
+        // aaray of objects
+        String [] str = new String[4];
+        for(int i = 0; i < str.length; i++){
+            str[i] = in.next();
         }
+        System.out.println(Arrays.toString(str));
+
+        // modify
+        str[1] = "nikhil";
+        System.out.println(Arrays.toString(str));
         }
     }
 
