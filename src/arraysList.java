@@ -8,7 +8,7 @@ class arraysList {
         // symtex-
         ArrayList<integer> list = new ArrayList<>();
          */
-        ArrayList<Integer> list = new ArrayList<>(10);
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>(10);
 
       // ADD-
 //        list.add(67);
@@ -27,15 +27,29 @@ class arraysList {
 //        System.out.println(list);
 
         //input
-        for(int i = 0; i < 5; i++){
-            list.add(in.nextInt());
-        }
+//        for(int i = 0; i < 5; i++){
+//            list.add(in.nextInt());
+//        }
+//
+//        // get item at any index
+//        for(int i = 0; i < 5; i++){
+//            System.out.print(list.get(i)); // pass index here, list[index] syntex not work here
+//        }
+//
+//       System.out.println(list);
 
-        // get item at any index
-        for(int i = 0; i < 5; i++){
-            System.out.print(list.get(i)); // pass index here, list[index] syntex not work here
-        }
+        // Multidimensional ArraysList-:
 
-       System.out.println(list);
+        // initialisation
+        for(int i = 0; i < 3; i++){
+            list.add(new ArrayList<>());
+        }
+        // add element
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                list.get(i).add(in.nextInt());
+            }
+        }
+        System.out.println(list);
     }
 }
