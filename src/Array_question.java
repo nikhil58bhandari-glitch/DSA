@@ -48,7 +48,7 @@ import java.util.Arrays;
        }
    }
    */
-
+ /*
   // Q3-: Reversing an Array-:
    public class Array_question {
       public static void main(String[] args) {
@@ -76,4 +76,43 @@ import java.util.Arrays;
           arr[index2] = temp;
       }
   }
+*/
 
+// Maximum Points You Can Obtain from Cards
+class Solution {
+    public int maxScore(int[] nums, int k) {
+        int n = nums.length;
+
+        int lsum = 0;
+        int rsum = 0;
+
+        // Step 1: take first k elements (all from left)
+        for (int i = 0; i < k; i++) {
+            lsum += nums[i];
+        }
+
+        int maxsum = lsum;
+
+        int rindex = n - 1;
+
+        // Step 2: move from left to right
+        for (int i = k - 1; i >= 0; i--) {
+            lsum -= nums[i];        // remove from left
+            rsum += nums[rindex];   // add from right
+            rindex--;
+
+            maxsum = Math.max(maxsum, lsum + rsum);
+        }
+
+        return maxsum;
+    }
+
+    public static void main(String[] args) {
+        int [] arr = {1,2,3,4,5,6};
+        int k = 3;
+        System.out.println(Arrays.toString(arr));
+
+        Solution obj = new Solution();
+        System.out.println(obj.maxScore(arr, k));
+    }
+}
