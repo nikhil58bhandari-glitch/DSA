@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.HashMap;
 
  /* // Q1-: Most Consecutive ones-
 // Longest subarray with at most k zeros:
@@ -50,7 +51,7 @@ class Consecutive_ones {
     }
 }
 */
-
+/*
 // Q2-:  Longest Substring Without Repeating Characters-
 
 class Substring {
@@ -88,4 +89,45 @@ class Substring {
         System.out.println(obj.longestNonRepeatingSubstring(str));
     }
 }
+ */
+
+// Fruit into Baskets-:
+              // max length subarray with at most 2 type of numbers-
+
+class fruit_basket {
+    public int totalFruits(int[] fruits, int k) {
+        int l = 0 , r = 0;
+        int maxlength = 0;
+       HashMap<Integer, Integer> map = new HashMap<>();
+
+        while(r < fruits.length) {
+            // add current fruit
+            map.put(fruits[r], map.getOrDefault(fruits[r], 0) + 1);
+
+        if(map.size() > k) {
+            while (map.size() > k) {
+                map.put(fruits[l], map.get(fruits[l]) - 1);
+
+                if (map.get(fruits[l]) == 0) {
+                    map.remove(fruits[l]);
+                }
+                l++;
+            }
+        }
+            if (map.size() <= k){
+                maxlength = Math.max(maxlength , r - l + 1);
+            }
+            r++;
+            }
+            return maxlength;
+        }
+
+    public static void main(String[] args) {
+        int [] fruit = {1,2,3,2,2};
+        int k = 2;
+        fruit_basket obj = new fruit_basket();
+        System.out.println(obj.totalFruits(fruit, k));
+    }
+    }
+
 
