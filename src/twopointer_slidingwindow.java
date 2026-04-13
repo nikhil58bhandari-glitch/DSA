@@ -2,9 +2,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.HashMap;
 
- /* // Q1-: Most Consecutive ones-
+  // Q1-: Most Consecutive ones-
 // Longest subarray with at most k zeros:
-
+/*
 class Consecutive_ones {
     public int longestOnes(int[] nums, int k) {
         int l = 0;
@@ -51,9 +51,9 @@ class Consecutive_ones {
     }
 }
 */
-/*
-// Q2-:  Longest Substring Without Repeating Characters-
 
+// Q2-:  Longest Substring Without Repeating Characters-
+/*
 class Substring {
     public int longestNonRepeatingSubstring(String s) {
 
@@ -93,7 +93,7 @@ class Substring {
 
 // Fruit into Baskets-:
               // max length subarray with at most 2 type of numbers-
-
+/*
 class fruit_basket {
     public int totalFruits(int[] fruits, int k) {
         int l = 0 , r = 0;
@@ -127,6 +127,52 @@ class fruit_basket {
         int k = 2;
         fruit_basket obj = new fruit_basket();
         System.out.println(obj.totalFruits(fruit, k));
+    }
+    }
+*/
+
+// Longest Substring with at most k Distinct Characters
+
+class substring{
+    public int kDistinctChar(String s, int k) {
+        int l = 0, r = 0;
+        int maxlength = 0;
+         HashMap<Character, Integer> map = new HashMap<>();
+
+        while (r < s.length()) {
+
+            // add character
+            char ch = s.charAt(r);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+            // shrink window
+           // while(map.size() > k){  // for better solution
+                if(map.size() > k){   // for optimal solution
+
+                char leftChar = s.charAt(l);
+                map.put(leftChar, map.get(leftChar) - 1);
+
+                if (map.get(leftChar) == 0) {
+                    map.remove(leftChar);
+                }
+                    l++;
+                }
+            // update answer
+            if(map.size() <= k) {
+                maxlength = Math.max(maxlength, r - l + 1);
+            }
+                r++;
+        }
+        return maxlength;
+    }
+
+    public static void main(String[] args) {
+       String s = "aababbcaacc";
+       int k = 2;
+
+
+        substring obj = new substring();
+        System.out.println(obj.kDistinctChar(s, k));
     }
     }
 
