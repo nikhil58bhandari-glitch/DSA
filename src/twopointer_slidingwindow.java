@@ -91,7 +91,7 @@ class Substring {
 }
  */
 
-// Fruit into Baskets-:
+// Q3-: Fruit into Baskets-:
               // max length subarray with at most 2 type of numbers-
 /*
 class fruit_basket {
@@ -131,8 +131,8 @@ class fruit_basket {
     }
 */
 
-// Longest Substring with at most k Distinct Characters
-
+// Q4-: Longest Substring with at most k Distinct Characters
+/*
 class substring{
     public int kDistinctChar(String s, int k) {
         int l = 0, r = 0;
@@ -175,5 +175,44 @@ class substring{
         System.out.println(obj.kDistinctChar(s, k));
     }
     }
+*/
 
+// Q5-: Number of Substrings Containing All Three Characters-:
 
+class SubstringABC {
+
+    public int numberOfSubstrings(String s) {
+        int[] count = new int[3]; // index 0 -> 'a', 1 -> 'b', 2 -> 'c'
+        int l = 0, r = 0;
+        int ans = 0;
+        int n = s.length();
+
+        while (r < n) {
+
+            // add current character
+            count[s.charAt(r) - 'a']++;
+
+            // check if window contains a, b, c
+            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {
+
+                // count all substrings starting from l
+                ans += (n - r);
+
+                // shrink window
+                count[s.charAt(l) - 'a']--;
+                l++;
+            }
+
+            r++;
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        String s = "abcabc";
+
+        SubstringABC obj = new SubstringABC();
+        System.out.println(obj.numberOfSubstrings(s)); // Output: 10
+    }
+}
