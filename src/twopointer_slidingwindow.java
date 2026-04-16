@@ -178,7 +178,7 @@ class substring{
 */
 
 // Q5-: Number of Substrings Containing All Three Characters-:
-
+/*
 class SubstringABC {
 
     public int numberOfSubstrings(String s) {
@@ -214,5 +214,48 @@ class SubstringABC {
 
         SubstringABC obj = new SubstringABC();
         System.out.println(obj.numberOfSubstrings(s)); // Output: 10
+    }
+}
+*/
+
+// Q6-: Longest Repeating Character Replacement-
+
+class LongestRepeatingChar {
+
+    public int characterReplacement(String s, int k) {
+        int[] count = new int[26]; // for A-Z
+        int l = 0, r = 0;
+        int maxFreq = 0;
+        int maxLength = 0;
+
+        while (r < s.length()) {
+
+            // add current character
+            count[s.charAt(r) - 'A']++;
+
+            // track most frequent character
+            maxFreq = Math.max(maxFreq, count[s.charAt(r) - 'A']);
+
+            // if window is invalid → shrink
+            while ((r - l + 1) - maxFreq > k) {
+                count[s.charAt(l) - 'A']--;
+                l++;
+            }
+
+            // update answer
+            maxLength = Math.max(maxLength, r - l + 1);
+
+            r++;
+        }
+
+        return maxLength;
+    }
+
+    public static void main(String[] args) {
+        String s = "AABABBA";
+        int k = 1;
+
+        LongestRepeatingChar obj = new LongestRepeatingChar();
+        System.out.println(obj.characterReplacement(s, k)); // Output: 4
     }
 }
