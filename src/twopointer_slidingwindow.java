@@ -219,7 +219,7 @@ class SubstringABC {
 */
 
 // Q6-: Longest Repeating Character Replacement-
-
+/*
 class LongestRepeatingChar {
 
     public int characterReplacement(String s, int k) {
@@ -257,5 +257,43 @@ class LongestRepeatingChar {
 
         LongestRepeatingChar obj = new LongestRepeatingChar();
         System.out.println(obj.characterReplacement(s, k)); // Output: 4
+    }
+}
+ */
+
+
+// Q7-:  Binary Subarrays With Sum / Count subarray sum equals k
+
+class BinarySubarray {
+    public int atMost(int[] nums, int goal) {
+
+        if(goal < 0) return 0;
+
+        int l = 0;
+        int sum = 0;
+        int count = 0;
+
+        for (int r = 0; r < nums.length; r++) {
+            sum  += nums[r];
+
+            while(sum > goal){
+                sum = sum - nums[l];
+                l = l+1;
+            }
+            count = count + (r - l + 1);
+        }
+        return count;
+    }
+
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        return atMost(nums, goal) - atMost(nums, goal - 1);
+
+    }
+    public static void main(String[] args) {
+        int [] nums = {1, 1, 0, 1, 0, 0, 1};
+        int goal = 3;
+
+        BinarySubarray obj = new BinarySubarray();
+        System.out.println(obj.numSubarraysWithSum(nums, goal));
     }
 }
