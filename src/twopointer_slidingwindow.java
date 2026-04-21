@@ -302,7 +302,7 @@ class BinarySubarray {
  */
 
 // Q8-: Subarray with k different integers-:
-
+/*
 class answer {
 
     public int subarraysWithKDistinct(int[] nums, int k) {
@@ -335,5 +335,67 @@ class answer {
         int k = 3;
 
         System.out.println(obj.subarraysWithKDistinct(nums, k));
+    }
+}
+*/
+
+// Q9-: Minimum Window Substring -:
+
+import java.util.*;
+
+class Solutions {
+    public String minWindow(String s, String t) {
+
+        if (s.length() < t.length()) return "";
+
+        int[] hash = new int[256];
+
+        // store frequency of t
+        for (char c : t.toCharArray()) {
+            hash[c]++;
+        }
+
+        int l = 0, r = 0;
+        int count = t.length();
+        int minLen = Integer.MAX_VALUE;
+        int start = 0;
+
+        while (r < s.length()) {
+
+            // include character
+            if (hash[s.charAt(r)] > 0) {
+                count--;
+            }
+            hash[s.charAt(r)]--;
+
+            // when valid window found
+            while (count == 0) {
+
+                // update answer
+                if (r - l + 1 < minLen) {
+                    minLen = r - l + 1;
+                    start = l;
+                }
+
+                // remove left character
+                hash[s.charAt(l)]++;
+                if (hash[s.charAt(l)] > 0) {
+                    count++;
+                }
+                l++;
+            }
+
+            r++;
+        }
+
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
+    }
+
+    public static void main(String[] args) {
+        Solutions obj = new Solutions();
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+
+        System.out.println(obj.minWindow(s, t));
     }
 }
