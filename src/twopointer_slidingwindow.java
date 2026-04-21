@@ -274,10 +274,11 @@ class BinarySubarray {
         int count = 0;
 
         for (int r = 0; r < nums.length; r++) {
-            sum  += nums[r];
+        //    sum  += nums[r];
+            sum +=  (nums[r] % 2);
 
             while(sum > goal){
-                sum = sum - nums[l];
+                sum = sum - (nums[l] % 2);
                 l = l+1;
             }
             count = count + (r - l + 1);
@@ -290,7 +291,8 @@ class BinarySubarray {
 
     }
     public static void main(String[] args) {
-        int [] nums = {1, 1, 0, 1, 0, 0, 1};
+    //    int [] nums = {1, 1, 0, 1, 0, 0, 1};
+        int [] nums = {1, 1, 2, 1, 1};
         int goal = 3;
 
         BinarySubarray obj = new BinarySubarray();
