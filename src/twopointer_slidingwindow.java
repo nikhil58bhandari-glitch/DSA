@@ -261,9 +261,8 @@ class LongestRepeatingChar {
 }
  */
 
-
 // Q7-:  Binary Subarrays With Sum / Count subarray sum equals k
-
+/*
 class BinarySubarray {
     public int atMost(int[] nums, int goal) {
 
@@ -297,5 +296,44 @@ class BinarySubarray {
 
         BinarySubarray obj = new BinarySubarray();
         System.out.println(obj.numSubarraysWithSum(nums, goal));
+    }
+}
+
+ */
+
+// Q8-: Subarray with k different integers-:
+
+class answer {
+
+    public int subarraysWithKDistinct(int[] nums, int k) {
+        return atMost(nums, k) - atMost(nums, k - 1);
+    }
+
+    public int atMost(int[] nums, int k) {
+        int l = 0, r = 0, count = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        while (r < nums.length) {
+            map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
+
+            while (map.size() > k) {
+                map.put(nums[l], map.get(nums[l]) - 1);
+                if (map.get(nums[l]) == 0) {
+                    map.remove(nums[l]);
+                }
+                l++;
+            }
+
+            count += (r - l + 1);
+            r++;   // ⚠️ important
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        answer obj = new answer();
+        int[] nums = {2, 1, 1, 1, 3, 4, 3, 2};
+        int k = 3;
+
+        System.out.println(obj.subarraysWithKDistinct(nums, k));
     }
 }
