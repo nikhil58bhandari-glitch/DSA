@@ -83,7 +83,7 @@ class Search{
  */
 
 // Q4-: Give an array nums of integers, return how many of them contain an even number of digits.
-
+/*
 class evenDigit {
     public static void main(String[] args) {
         int[] nums = {12, 345, 2, 6, 7896};
@@ -111,14 +111,26 @@ class evenDigit {
         }
         return false;
          */
+/*
         return numbersOfDigit % 2 == 0;
     }
 
     // count numbers of digit in the numbers
+
+    static int digit2(int num){
+    if(num < 0){
+    num = num * -1;
+    }
+    return (int)(Math.log10(num)) + 1;
+    }
+
     static int digits(int num) {
 
         if(num < 0){
             num = num * -1;
+        }
+        if(num == 0){
+            return 1;
         }
         int count = 0;
         while (num > 0) {
@@ -128,6 +140,43 @@ class evenDigit {
         return count;
     }
 }
+*/
+
+// Q5-:  Max Wealth->
+
+class MaxWealth{
+    public static void main(String[] args) {
+        int [][] accounts = {
+                {1,2,3},
+                {3,2,1}
+        };
+
+        System.out.println(maximumWealth(accounts));
+
+    }
+    public static int maximumWealth(int[][] accounts){
+       // person = row
+        // account = colums
+        int ans = Integer.MIN_VALUE;
+        for(int person = 0; person < accounts.length; person++){
+           // when you start an new colum, take a new sum for that row
+           int sum = 0;
+
+            for(int account = 0; account < accounts[person].length; account++ ){
+                sum += accounts[person][account];
+            }
+            // now we have sum of account of person
+            // check with overall ans
+            if(sum > ans){
+                ans = sum;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
 
 
 
