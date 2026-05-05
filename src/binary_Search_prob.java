@@ -296,7 +296,7 @@ class Mountain {
  */
 
 // Q8 -:  Search in Rotated Sorted Array->
-
+/*
 class rotatedArray{
     public static void main(String[] args) {
 int [] arr = {4,4,5,5,5,5,6,7,0,1,2};
@@ -402,7 +402,133 @@ static int findpivotwithDuplicates(int[] arr){
     return -1;
 }
 }
+ */
 
+// Q9 -:  Rotation Count
+/*
+class rotationCount {
+    public static void main(String[] args) {
+        int[] arr = {5, 6, 7, 8, 0, 1, 2, 3, 4};
+        System.out.println(countRotation(arr));
+    }
+
+    private static int countRotation(int[] arr) {
+        int pivot = findpivot(arr);
+        return pivot + 1;
+
+    }
+
+
+    static int findpivot(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (mid < end && arr[mid] > arr[mid + 1]) {
+                return mid;
+            }
+            if (mid > start && arr[mid] < arr[mid - 1]) {
+                return mid - 1;
+            }
+            if (arr[mid] <= arr[start]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    // using this when arr contain duplicate element-
+    static int findpivotwithDuplicates(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            // 4 case over here-:
+            if (mid < end && arr[mid] > arr[mid + 1]) {
+                return mid;
+            }
+            if (mid > start && arr[mid] < arr[mid - 1]) {
+                return mid - 1;
+            }
+            // if element at middel, start, end are equel then just skip the duplicates
+            if (arr[mid] == arr[start] && arr[mid] == arr[mid]) {
+                // skip the duplicates
+                // Note: what if these element at start and end  were the pivot??
+                // check if start is pivot
+                if (arr[start] > arr[start + 1]) {
+                    return start;
+                }
+                start++;
+
+                // check whether end is pivot
+                if (arr[end] < arr[end - 1]) {
+                    return end - 1;
+                }
+                end--;
+            }
+            // left side is sorted, so pivot shold be right
+            else if (arr[start] < arr[mid] || (arr[start] == arr[mid] && arr[mid] > arr[end])) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return -1;
+
+    }
+}
+ */
+
+// Q10 -: Split Array Largest Sum-
+class SplitArray {
+    public static void main(String[] args) {
+
+    }
+
+    public int splitArray(int[] nums, int m) {
+        int start = 0;
+        int end = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            start = Math.max(start, nums[i]); // in the end of the loop this will contain the max item of the array
+            end += nums[i];
+        }
+
+        // binary search
+        while (start < end) {
+            // try for the middle as potential ans
+            int mid = start + (end - start) / 2;
+
+            // calculate how many pieces you can divide this in with this max sum
+            int sum = 0;
+            int pieces = 1;
+            for(int num : nums) {
+                if (sum + num > mid) {
+                    // you cannot add this in this subarray, make new one
+                    // say you add this num in new subarray, then sum = num
+                    sum = num;
+                    pieces++;
+                } else {
+                    sum += num;
+                }
+            }
+
+            if (pieces > m) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+
+        }
+        return end; // here start == end
+    }
+}
 
 
 
