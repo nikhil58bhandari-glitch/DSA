@@ -299,12 +299,13 @@ class Mountain {
 
 class rotatedArray{
     public static void main(String[] args) {
-int [] arr = {4,5,6,7,0,1,2};
+int [] arr = {4,4,5,5,5,5,6,7,0,1,2};
         System.out.println(findPivot(arr));
     }
 
     static  int search(int [] nums, int target){
-        int pivot = findPivot(nums);
+        // int pivot = findPivot(nums);
+        int pivot = findpivotwithDuplicates(nums);
 
         // if you did not find the array ,it means the array is not rotated
         if(pivot == -1){
@@ -337,6 +338,7 @@ int [] arr = {4,5,6,7,0,1,2};
         return -1;
     }
 
+    // this will not work in duplicate value-
     static int findPivot(int[] arr){
         int start = 0;
         int end = arr.length - 1;
@@ -359,7 +361,48 @@ int [] arr = {4,5,6,7,0,1,2};
         }
         return -1;
     }
+// using this function we can find pivot with duplicates
+static int findpivotwithDuplicates(int[] arr){
+    int start = 0;
+    int end = arr.length - 1;
+
+    while (start <= end){
+        int mid = start + (end - start) / 2 ;
+
+        // 4 case over here-:
+        if(mid < end && arr[mid] > arr[mid + 1]){
+            return mid;
+        }
+        if(mid > start && arr[mid] < arr[mid - 1]){
+            return mid - 1;
+        }
+       // if element at middel, start, end are equel then just skip the duplicates
+        if(arr[mid] == arr[start] && arr[mid] == arr[mid]){
+            // skip the duplicates
+            // Note: what if these element at start and end  were the pivot??
+            // check if start is pivot
+            if(arr[start] > arr[start + 1]){
+                return start;
+            }
+            start++;
+
+            // check whether end is pivot
+            if(arr[end] < arr[end - 1]){
+                return end - 1;
+            }
+            end--;
+        }
+        // left side is sorted, so pivot shold be right
+        else if(arr[start] < arr[mid] || (arr[start] == arr[mid] && arr[mid] > arr[end])){
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+    return -1;
 }
+}
+
 
 
 
