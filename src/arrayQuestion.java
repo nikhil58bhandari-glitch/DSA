@@ -17,7 +17,7 @@ import java.util.*;
  */
 
  // Q2-> 1929 -: Concatenation of Array-
-
+/*
 class concationation{
     public int[] getConcatenation(int[] nums) {
         int n = nums.length;
@@ -29,4 +29,25 @@ class concationation{
         return ans;
     }
 }
+ */
+
+// Q3-> 1480-: Running Sum of 1D Array-
+/*
+class runningSum{
+    public int[] runningSum(int[] nums) {
+
+        int n = nums.length;
+        int [] ans = new int[n];
+        ans[0] = nums[0];
+
+        for(int i = 1; i < n; i++){
+            ans[i] = ans[i - 1] + nums[i];
+        }
+        return ans;
+    }
+}
+ */
+
+//
+
 
