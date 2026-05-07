@@ -49,7 +49,7 @@ class runningSum{
  */
 
 // Q4-> 1470-: Shuffle the Array-
-
+/*
 class shuffleArray{
     public int[] shuffle(int[] nums, int n){
 
@@ -64,5 +64,33 @@ class shuffleArray{
         return ans;
     }
 }
+ */
 
+// Q5-> 1431-: Kids with the Greatest Number of Candies-:
+/*
+class candies {
+    public List<Boolean> kidwithCandies(int[] candies, int extraCandies) {
+        List<Boolean> ans = new ArrayList<>();
+
+        int max = candies[0];
+
+        // find maximum candy
+        for (int i = 0; i < candies.length; i++) {
+            if (candies[i] > max) {
+                max = candies[i];
+            }
+        }
+
+        // check every kid
+        for (int i = 0; i < candies.length; i++) {
+            if (candies[i] + extraCandies >= max) {
+                ans.add(true);
+            } else {
+                ans.add(false);
+            }
+        }
+        return ans;
+    }
+}
+ */
 
