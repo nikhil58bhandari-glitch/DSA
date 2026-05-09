@@ -135,7 +135,7 @@ class samllerNum{
  */
 
 // Q8-> 1389-: Create Target Array in The Given Order-
-
+/*
 class targetArray{
     public int[] createTargetArray(int[] nums, int[] index) {
 
@@ -152,6 +152,35 @@ class targetArray{
         return target;
     }
     }
+ */
 
+// Q10-> 1832-: Check if the sentence is pangram
+class pangram {
+    public boolean checkIfPangram(String sentence) {
+
+        boolean[] seen = new boolean[26];
+
+        // traverse string
+        for (int i = 0; i < sentence.length(); i++) {
+
+            char ch = sentence.charAt(i);
+
+            // convert char into index
+            int index = ch - 'a';
+
+            seen[index] = true;
+        }
+
+        // check all alphabets appeared or not
+        for (int i = 0; i < 26; i++) {
+
+            if (seen[i] == false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 
 
