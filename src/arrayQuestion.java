@@ -113,7 +113,7 @@ class goodPairs{
  */
 
 // Q7-> 1365-: How Many Number are smaller than the current number
-
+/*
 class samllerNum{
     public int[] smallerNumbersThanCurrent(int[] nums) {
 
@@ -132,6 +132,26 @@ class samllerNum{
         return ans;
     }
 }
+ */
+
+// Q8-> 1389-: Create Target Array in The Given Order-
+
+class targetArray{
+    public int[] createTargetArray(int[] nums, int[] index) {
+
+        ArrayList<Integer>list = new ArrayList<>();
+
+        for(int i = 0; i < nums.length; i++){
+            list.add(index[i], nums[i]);
+        }
+
+        int [] target = new int[nums.length];
+        for(int i = 0; i < list.size(); i++){
+            target[i] = list.get(i);
+        }
+        return target;
+    }
+    }
 
 
 
